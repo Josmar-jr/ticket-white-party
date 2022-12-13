@@ -1,12 +1,17 @@
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import { useSession, getSession } from "next-auth/react";
-import { useRouter } from "next/router";
 
 export default function Ticket() {
   const { data: session } = useSession();
-  const router = useRouter();
 
-  return <div>{session?.user?.email}</div>;
+  return (
+    <div className="bg-zinc-600">
+      {session?.user?.email}
+      <img
+        src={`http://localhost:3000/api/og?image=${session?.user?.image}&name=${session?.user?.name}`}
+      />
+    </div>
+  );
 }
 
 export const getServerSideProps: GetServerSideProps = async ({
