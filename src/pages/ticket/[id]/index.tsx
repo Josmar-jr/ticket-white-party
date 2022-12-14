@@ -48,7 +48,7 @@ export default function Ticket() {
     return "";
   }
 
-  const srcImage = `http://localhost:3000/api/og?image=${
+  const srcImage = `https://ticket-white-party.vercel.app/api/og?image=${
     session?.user?.image
   }&name=${formattedName()}&ticketNr=${dataTicket?.ticketNr}`;
 
