@@ -22,11 +22,12 @@ export default async function (req: NextRequest) {
 
   const image = searchParams.has("image") ? searchParams.get("image") : "" as string;
   const name = searchParams.has("name") ? searchParams.get("name") : "" as string;
+  const ticketNr = searchParams.has("ticketNr") ? searchParams.get("ticketNr") : "" as string;
 
   return new ImageResponse(
     (
-      <div tw="flex text-center justify-center align-center bg-black h-full w-full">
-        <div tw="flex absolute left-2">
+        <div tw="flex text-center justify-center align-center bg-black h-full w-full bg-gray-200">
+        <div tw="flex absolute left-2 top-2">
           <svg
             width="391"
             height="624"
@@ -100,7 +101,7 @@ export default async function (req: NextRequest) {
 
           <div tw="flex h-16 w-[371px] absolute items-center justify-center text-xl top-[528px] left-0">
             <span tw="text-5xl" style={{ fontFamily: "SpaceMono" }}>
-              #001
+              #{ticketNr?.toString().padStart(3, "0")}
             </span>
           </div>
         </div>
@@ -108,7 +109,7 @@ export default async function (req: NextRequest) {
     ),
     {
       width: 391,
-      height: 624,
+      height: 640,
       fonts: [
         {
           name: "SpaceMono",
